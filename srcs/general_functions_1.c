@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   general_functions_1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
+/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:42:53 by vbaron            #+#    #+#             */
-/*   Updated: 2020/10/16 17:20:40 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/07/29 22:50:13 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,12 @@ void	create_map(t_input *args)
 		if (args->line[i] == '1')
 		{
 			size = ft_strlen(args->line);
-			if (!(dup = malloc(sizeof(char) * (size + 2))))
+			dup = malloc(sizeof(char) * (size + 2));
+			if (!dup)
 				return;
 			i = 0;
-			while (i < size)
-			{
+			while (i++ < size)
 				dup[i] = args->line[i];
-				i++;
-			}
 			dup[i] = 'x';
 			i++;
 			dup[i] = '\0';
