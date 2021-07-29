@@ -21,6 +21,29 @@ char *draw_pixel(t_general *mother, int x, int y)
      return (dest);
 }
 
+void clear_images(t_general *mother)
+{
+     int i;
+
+     i = 0;
+     while (mother->args.matrix[i])
+     {
+          ft_free(mother->args.matrix[i]);
+          i++;
+     }
+     
+     mlx_destroy_image(mother->mlx.ptr, mother->args.wall);
+     mlx_destroy_image(mother->mlx.ptr, mother->args.floor);
+     mlx_destroy_image(mother->mlx.ptr, mother->args.coins1);
+     mlx_destroy_image(mother->mlx.ptr, mother->args.exit);
+     mlx_destroy_image(mother->mlx.ptr, mother->args.player);
+     // free(mother->args.matrix);
+     // free(mother->args.map);
+     // free(mother->args.line);
+     // free(mother->args.index);
+
+}
+
 int key_press(int keycode, t_general *mother)
 {
      mother->gps.event = 1;
@@ -34,6 +57,7 @@ int key_press(int keycode, t_general *mother)
           mother->gps.move.x = 1;
      else if (keycode == ESC)
      {
+          clear_images(mother);
           mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
           exit(1);
      }
@@ -62,14 +86,6 @@ int events_list(t_general *mother)
           mother->gps.event = 0;
      }
 
-     return (0);
-}
-
-int cross_exit(int keycode)
-{
-     ft_putnbr_fd(keycode, 1);
-     if (keycode == 33)
-          exit(1);
      return (0);
 }
 

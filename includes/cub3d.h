@@ -21,7 +21,7 @@
 # include "math.h"
 
 //LINUX
-/*
+
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
 # define RIGHT_ARROW 65363
@@ -33,17 +33,17 @@
 # define DOWN 115
 # define RIGHT 100
 # define ESC 65307
-*/
+
 
 //MACOS
 
-# define KEY_PRESS 2
-# define KEY_RELEASE 3
-# define UP 13
-# define LEFT 0
-# define DOWN 1
-# define RIGHT 2
-# define ESC 53
+// # define KEY_PRESS 2
+// # define KEY_RELEASE 3
+// # define UP 13
+// # define LEFT 0
+// # define DOWN 1
+// # define RIGHT 2
+// # define ESC 53
 
 
 
@@ -94,12 +94,7 @@ typedef struct s3_list
     t_text      C;
     void *player;
     void *coins1;
-    void *coins2;
-    void *coins3;
-    void *coins4;
-    void *coins5;
     void *exit;
-    void *ennemy;
     void *wall;
     void *floor;
     char        *index;

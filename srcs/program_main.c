@@ -42,8 +42,6 @@ int main(int argc, char **argv)
         return (0);
     }
     map_parsing(&(mother.args), &mother);
-    int i;
-    i = 0;
     position_info(&mother);
     mother.collectibles = 1;
     mother.exit = 1;

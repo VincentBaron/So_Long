@@ -30,20 +30,20 @@ LIBFT_DIR = Libft
 
 ######################################################
 ##DIR_MacOS
-MLX_DIR = mlx-macos
+##MLX_DIR = mlx-macos
 ######################################################
 ##DIR_Linux
-##MLX_DIR = mlx-linux
+MLX_DIR = mlx-linux
 #######################################################
 
 NAME = Cub3d
 
 ########################################################
 ##MacOs
-CC = gcc
+##CC = gcc
 ########################################################
 ##Linux
-##CC = clang
+CC = clang
 ########################################################
 
 CFLAGS = -Wall -Wextra -Werror -g
@@ -51,10 +51,10 @@ CFLAGS = -Wall -Wextra -Werror -g
 ########################################################
 ##MacOS
 #-I /usr/X11/include -g -L /usr/X11/lib -lX11 -lmlx -lXext 
-LIBS = -framework OpenGL -framework Appkit
+##LIBS = -framework OpenGL -framework Appkit
 ########################################################
 ##Linux
-##LIBS = -lXext -lX11 -lm
+LIBS = -lXext -lX11 -lm
 ########################################################
 
 MLX = $(addprefix $(MLX_DIR)/,libmlx.a)
@@ -72,6 +72,9 @@ $(NAME): $(OBJS) $(LIBFT) $(MLX)
 
 $(LIBFT):
 		 make -C $(LIBFT_DIR)
+
+$(MLX):
+		 make -C $(MLX_DIR)
 
 clean:
 		rm -f $(OBJS)		
