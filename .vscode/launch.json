@@ -8,7 +8,7 @@
             "name": "(lldb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/Users/vbaron/Desktop/So_Long/Cub3d",
+            "program": "/home/user42/Bureau/So_Long/Cub3d",
             "args": ["map.ber"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

@@ -88,9 +88,11 @@ int events_list(t_general *mother)
      return (0);
 }
 
-int exit_game(t_general *mother)
+int exit_game(int keycode, t_general *mother)
 {
-     clear_images(mother);
+     // clear_images(mother);
+     (void)keycode;
+     (void)mother;
      exit(1);
      return (0);
 }

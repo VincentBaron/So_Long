@@ -15,7 +15,6 @@
 void	create_map(t_input *args)
 {
 	char	*dup;
-	char 	*temp;
 	int		size;
 	int		i;
 
@@ -36,11 +35,8 @@ void	create_map(t_input *args)
 			dup[i] = 'x';
 			i++;
 			dup[i] = '\0';
-			temp = ft_strjoin_bis(args->map, dup);
-			ft_free(args->map);
-			args->map = temp;
-			ft_free(temp);
-			ft_free(dup);
+			args->map = ft_strjoin_bis(args->map, dup);
+				ft_free(dup);
 			break;
 		}
 		i++;
