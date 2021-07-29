@@ -28,8 +28,12 @@ void	create_map(t_input *args)
 			if (!dup)
 				return;
 			i = 0;
-			while (i++ < size)
-				dup[i] = args->line[i];
+			while (i < size)
+			{
+						dup[i] = args->line[i];
+						i++;
+			}
+		
 			dup[i] = 'x';
 			i++;
 			dup[i] = '\0';
