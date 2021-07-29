@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
+/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/07/25 14:58:26 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/07/29 16:41:48 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define LEFT 0
 # define DOWN 1
 # define RIGHT 2
+# define ESC 53
 
 
 
@@ -137,14 +138,20 @@ typedef struct s5_list
     t_input args;
     t_mlx   mlx;
     t_gps   gps;
+    int move;
+    int collectibles;
+    int exit;
     t_map map;
 }   t_general;
 
 //map_parsing.c
 
-void    error(void);
+void final(t_general *mother);
+void check_collectibles(t_general *mother);
+
+void    error(t_general *mother, int e);
 int     main(int argc, char **argv);
-int     map_parsing(t_input *args);
+int    map_parsing(t_input *args, t_general *mother);
 int     check_charset(char c, char const *set);
 void    args_definer(t_input *args);
 int     **ft_realloc(int **tab);

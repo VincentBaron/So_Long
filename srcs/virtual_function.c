@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   virtual_function.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
+/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/07/25 15:10:21 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/07/29 17:04:12 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 char *draw_pixel(t_general *mother, int x, int y)
 {
      char *dest;
-     
-     dest = (mother->mlx.img_map.addr +  x * (mother->mlx.img_map.bpp / 8) + y * mother->mlx.img_map.size_line);
+
+     dest = (mother->mlx.img_map.addr + x * (mother->mlx.img_map.bpp / 8) + y * mother->mlx.img_map.size_line);
      *(unsigned int *)dest = mother->mlx.img_map.color;
      return (dest);
 }
@@ -32,8 +32,12 @@ int key_press(int keycode, t_general *mother)
           mother->gps.move.x = -1;
      else if (keycode == RIGHT)
           mother->gps.move.x = 1;
+     else if (keycode == ESC)
+     {
+          mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
+          exit(1);
+     }
      mother->gps.event = 1;
-     printf("keycode: %d\n", keycode);
      return (0);
 }
 
@@ -48,29 +52,45 @@ int key_release(int keycode, t_general *mother)
 
 int events_list(t_general *mother)
 {
-     if (mother->gps.event == 1)
-          new_map(mother);
-     mother->gps.event = 0;
+     check_collectibles(mother);
+     if (mother->exit == 0)
+          final(mother);
+     else
+     {
+          if (mother->gps.event == 1)
+               new_map(mother);
+          mother->gps.event = 0;
+     }
+
      return (0);
 }
-    
 
-void    game_start(t_general *mother)
-{    
+int cross_exit(int keycode)
+{
+     ft_putnbr_fd(keycode, 1);
+     if (keycode == 33)
+          exit(1);
+     return (0);
+}
+
+void game_start(t_general *mother)
+{
      mother->gps.move.x = 0;
      mother->gps.move.y = 0;
-     mother->args.R[0] = 1000;
-     mother->args.R[1] = 700;
-     
+     mother->move = 0;
+     mother->args.R[0] = 2500;
+     mother->args.R[1] = 1400;
+
      if (!(mother->mlx.ptr = mlx_init()))
-          ft_putstr_fd("Error initialising mlx", 2);
+          ft_putstr_fd("Error initialising mlx", 1);
      if (!(mother->mlx.win = mlx_new_window(mother->mlx.ptr, mother->args.R[0], mother->args.R[1], "J' aime les Moules Brite")))
-          ft_putstr_fd("Error creating window", 2);
+          ft_putstr_fd("Error creating window", 1);
      load_textures(mother);
      draw_map(mother);
      // mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->mlx.img_map.image, 0, 0);
-     mlx_hook(mother->mlx.win, KEY_PRESS, 1L<<0, &key_press, mother);
-     mlx_hook(mother->mlx.win, KEY_RELEASE, 1L<<1, &key_release, mother);
+     mlx_hook(mother->mlx.win, KEY_PRESS, 1L << 0, &key_press, mother);
+     mlx_hook(mother->mlx.win, KEY_RELEASE, 1L << 1, &key_release, mother);
+     // mlx_hook(mother->mlx.win, KEY_PRESS, 1L << 17, &cross_exit, mother);
      mlx_loop_hook(mother->mlx.ptr, &events_list, mother);
      mlx_loop(mother->mlx.ptr);
 }
