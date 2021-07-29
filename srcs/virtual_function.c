@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/07/29 17:04:12 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/07/29 21:27:10 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void clear_images(t_general *mother)
           ft_free(mother->args.matrix[i]);
           i++;
      }
-     
+
      mlx_destroy_image(mother->mlx.ptr, mother->args.wall);
      mlx_destroy_image(mother->mlx.ptr, mother->args.floor);
      mlx_destroy_image(mother->mlx.ptr, mother->args.coins1);
@@ -41,7 +41,6 @@ void clear_images(t_general *mother)
      // free(mother->args.map);
      // free(mother->args.line);
      // free(mother->args.index);
-
 }
 
 int key_press(int keycode, t_general *mother)
@@ -89,6 +88,13 @@ int events_list(t_general *mother)
      return (0);
 }
 
+int exit_game(t_general *mother)
+{
+     clear_images(mother);
+     exit(1);
+     return (0);
+}
+
 void game_start(t_general *mother)
 {
      mother->gps.move.x = 0;
@@ -104,6 +110,7 @@ void game_start(t_general *mother)
      load_textures(mother);
      draw_map(mother);
      // mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->mlx.img_map.image, 0, 0);
+     mlx_hook(mother->mlx.win, 33, 1L << 17, exit_game, mother);
      mlx_hook(mother->mlx.win, KEY_PRESS, 1L << 0, &key_press, mother);
      mlx_hook(mother->mlx.win, KEY_RELEASE, 1L << 1, &key_release, mother);
      // mlx_hook(mother->mlx.win, KEY_PRESS, 1L << 17, &cross_exit, mother);
