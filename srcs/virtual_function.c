@@ -100,6 +100,7 @@ int exit_game(int keycode, t_general *mother)
 void game_start(t_general *mother)
 {
      mother->gps.move.x = 0;
+     mother->gps.event = 0;
      mother->gps.move.y = 0;
      mother->move = 0;
      mother->args.R[0] = 2500;

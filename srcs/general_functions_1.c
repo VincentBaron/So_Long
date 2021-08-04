@@ -19,12 +19,12 @@ void	create_map(t_input *args)
 	int		i;
 
 	i = 0;
-	while ((args->line)[i] == ' ' || (args->line)[i] == '1')
+	while (args->line[i] && ((args->line)[i] == ' ' || (args->line)[i] == '1'))
 	{
 		if (args->line[i] == '1')
 		{
 			size = ft_strlen(args->line);
-			dup = malloc(sizeof(char) * (size + 2));
+			dup = malloc(sizeof(char) * (size + 3));
 			if (!dup)
 				return;
 			i = 0;

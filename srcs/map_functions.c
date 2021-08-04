@@ -109,7 +109,8 @@ void draw_map(t_general *mother)
           }
           mother->map.track_x++;
      }
-      mlx_string_put(mother->mlx.ptr, mother->mlx.win, 5, 5, mother->mlx.img_map.color, move_str);
+ 
+      mlx_string_put(mother->mlx.ptr, mother->mlx.win, 5, 5, 0xFF0000, move_str);
       ft_free(move_str);
 }
 
