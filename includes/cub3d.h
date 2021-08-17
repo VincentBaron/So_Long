@@ -78,6 +78,18 @@ typedef struct s2_list
     char *path;
 } t_text;
 
+typedef struct s_img
+{
+    void *image;
+    char *addr;
+    int bpp;
+    int endian;
+    int size_line;
+    unsigned int color;
+    int height;
+    int width;
+} t_img;
+
 typedef struct s3_list
 {
     int         fd;
@@ -92,25 +104,15 @@ typedef struct s3_list
     t_text      S;
     t_text      F;
     t_text      C;
-    void *player;
-    void *coins1;
-    void *exit;
-    void *wall;
-    void *floor;
+    t_img player;
+    t_img coins1;
+    t_img exit;
+    t_img wall;
+    t_img floor;
     char        *index;
     int         index_i;
     int         tracker;
 } t_input;
-
-typedef struct s_img
-{
-    void *image;
-    char *addr;
-    int bpp;
-    int endian;
-    int size_line;
-    unsigned int color;
-} t_img;
 
 typedef struct s12_list
 {
@@ -180,6 +182,7 @@ void redefine_map(t_general *mother);
 int  new_map(t_general *mother);
 
 void load_textures(t_general *mother);
+void clear_images(t_general *mother);
 
 
 #endif

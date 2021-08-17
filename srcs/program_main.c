@@ -46,6 +46,6 @@ int main(int argc, char **argv)
     mother.collectibles = 1;
     mother.exit = 1;
     game_start(&mother);
-    system("leaks a.out");
+    clear_images(&mother);
     return (0);
 }

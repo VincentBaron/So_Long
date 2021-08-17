@@ -78,31 +78,29 @@ void draw_map(t_general *mother)
      move_str = ft_itoa(mother->move);
      mother->move++;
      mother->map.track_x = 0;
-     mother->map.size_x = 64;
      while (mother->args.matrix[mother->map.track_x])
      {
           mother->map.track_y = 0;
-          mother->map.size_y = 64;
           while (mother->args.matrix[mother->map.track_x][mother->map.track_y])
           {
                if (mother->args.matrix[mother->map.track_x][mother->map.track_y] == '1')
-                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.wall, mother->map.track_y * 64, mother->map.track_x * 64);
+                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.wall.image, mother->args.wall.width * mother->map.track_y, mother->args.wall.height * mother->map.track_x);
                if (mother->args.matrix[mother->map.track_x][mother->map.track_y] == '0')
-                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.floor, mother->map.track_y * 64, mother->map.track_x * 64);
+                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.floor.image, mother->args.floor.width * mother->map.track_y, mother->args.floor.height * mother->map.track_x);
                if (mother->args.matrix[mother->map.track_x][mother->map.track_y] == 'P')
                {
-                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.floor, mother->map.track_y * 64, mother->map.track_x * 64);
-                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.player, mother->map.track_y * 64, mother->map.track_x * 64);
+                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.floor.image, mother->args.floor.width * mother->map.track_y, mother->args.floor.height * mother->map.track_x);
+                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.player.image, mother->args.player.width * mother->map.track_y, mother->args.player.height * mother->map.track_x);
                }
                if (mother->args.matrix[mother->map.track_x][mother->map.track_y] == 'C')
                {
-                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.floor, mother->map.track_y * 64, mother->map.track_x * 64);
-                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.coins1, mother->map.track_y * 64, mother->map.track_x * 64);
+                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.floor.image, mother->args.floor.width * mother->map.track_y, mother->args.floor.height * mother->map.track_x);
+                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.coins1.image, mother->args.coins1.width * mother->map.track_y, mother->args.coins1.height * mother->map.track_x);
                }
                if (mother->args.matrix[mother->map.track_x][mother->map.track_y] == 'E')
                {
-                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.floor, mother->map.track_y * 64, mother->map.track_x * 64);
-                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.exit, mother->map.track_y * 64, mother->map.track_x * 64);
+                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.floor.image, mother->args.floor.width * mother->map.track_y, mother->args.floor.height * mother->map.track_x);
+                    mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.exit.image, mother->args.exit.width * mother->map.track_y, mother->args.exit.height * mother->map.track_x);
                }
 
                mother->map.track_y++;
@@ -181,14 +179,12 @@ void check_collectibles(t_general *mother)
 void final(t_general *mother)
 {
      mother->map.track_x = 0;
-     mother->map.size_x = 64;
      while (mother->args.matrix[mother->map.track_x])
      {
           mother->map.track_y = 0;
-          mother->map.size_y = 64;
           while (mother->args.matrix[mother->map.track_x][mother->map.track_y])
           {
-               mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.floor, mother->map.track_y * 64, mother->map.track_x * 64);
+               mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->args.floor.image, mother->map.track_y * 64, mother->map.track_x * 64);
                mother->map.track_y++;
           }
           mother->map.track_x++;

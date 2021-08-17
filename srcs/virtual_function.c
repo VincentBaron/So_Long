@@ -31,13 +31,13 @@ void clear_images(t_general *mother)
           ft_free(mother->args.matrix[i]);
           i++;
      }
-
-     mlx_destroy_image(mother->mlx.ptr, mother->args.wall);
-     mlx_destroy_image(mother->mlx.ptr, mother->args.floor);
-     mlx_destroy_image(mother->mlx.ptr, mother->args.coins1);
-     mlx_destroy_image(mother->mlx.ptr, mother->args.exit);
-     mlx_destroy_image(mother->mlx.ptr, mother->args.player);
-     // free(mother->args.matrix);
+     
+     mlx_destroy_image(mother->mlx.ptr, (mother->args.wall.image));
+     mlx_destroy_image(mother->mlx.ptr, mother->args.floor.image);
+     mlx_destroy_image(mother->mlx.ptr, mother->args.coins1.image);
+     mlx_destroy_image(mother->mlx.ptr, mother->args.exit.image);
+     mlx_destroy_image(mother->mlx.ptr, mother->args.player.image);
+     free(mother->args.matrix);
      // free(mother->args.map);
      // free(mother->args.line);
      // free(mother->args.index);
@@ -58,6 +58,8 @@ int key_press(int keycode, t_general *mother)
      {
           clear_images(mother);
           mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
+          mlx_destroy_display(mother->mlx.ptr);
+          free(mother->mlx.ptr);
           exit(1);
      }
      mother->gps.event = 1;
@@ -90,7 +92,7 @@ int events_list(t_general *mother)
 
 int exit_game(int keycode, t_general *mother)
 {
-     // clear_images(mother);
+     clear_images(mother);
      (void)keycode;
      (void)mother;
      exit(1);

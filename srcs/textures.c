@@ -14,15 +14,9 @@
 
 void load_textures(t_general *mother)
 {
-    int text_width;
-    int text_height;
-
-    text_width = 64;
-    text_height = 64;
-
-    mother->args.player = mlx_xpm_file_to_image(mother->mlx.ptr, "./textures/player.xpm", &(text_width), &(text_height));
-    mother->args.floor = mlx_xpm_file_to_image(mother->mlx.ptr, "./textures/grass.xpm", &(text_width), &(text_height));
-    mother->args.wall = mlx_xpm_file_to_image(mother->mlx.ptr, "./textures/wall.xpm", &(text_width), &(text_height));
-    mother->args.coins1 = mlx_xpm_file_to_image(mother->mlx.ptr, "./textures/coin.xpm", &(text_width), &(text_height));
-    mother->args.exit = mlx_xpm_file_to_image(mother->mlx.ptr, "./textures/exit.xpm", &(text_width), &(text_height));
+    mother->args.player.image = mlx_xpm_file_to_image(mother->mlx.ptr, "./textures/player.xpm", &(mother->args.player.width), &(mother->args.player.height));
+    mother->args.floor.image = mlx_xpm_file_to_image(mother->mlx.ptr, "./textures/grass.xpm", &(mother->args.floor.width), &(mother->args.floor.height));
+    mother->args.wall.image = mlx_xpm_file_to_image(mother->mlx.ptr, "./textures/wall.xpm", &(mother->args.wall.width), &(mother->args.wall.height));
+    mother->args.coins1.image = mlx_xpm_file_to_image(mother->mlx.ptr, "./textures/coin.xpm", &(mother->args.coins1.width), &(mother->args.coins1.height));
+    mother->args.exit.image = mlx_xpm_file_to_image(mother->mlx.ptr, "./textures/exit.xpm", &(mother->args.exit.width), &(mother->args.exit.height));
 }
