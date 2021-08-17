@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include "get_next_line.h"
 # include "../Libft/libft.h"
-# include "mlx.h"
+# include "../mlx-linux/mlx.h"
 # include "math.h"
 
 //LINUX

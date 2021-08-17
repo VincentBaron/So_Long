@@ -143,8 +143,8 @@ int map_parsing(t_input *args, t_general *mother)
         }
         ft_free(args->line);
     }
-    // ft_free(args->line);
     create_map(args);
+    free(args->line);
     args->matrix = ft_split(args->map, "x");
     check_map(mother);
     ft_free(args->map);
