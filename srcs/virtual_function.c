@@ -21,23 +21,38 @@ char *draw_pixel(t_general *mother, int x, int y)
      return (dest);
 }
 
-void clear_images(t_general *mother)
+void ft_clean(t_general *mother)
 {
      int i;
 
      i = 0;
      while (mother->args.matrix[i])
      {
-          ft_free(mother->args.matrix[i]);
+          if (mother->args.matrix[i])
+               ft_free(mother->args.matrix[i]);
           i++;
      }
-     free(mother->args.matrix);
-     
-     mlx_destroy_image(mother->mlx.ptr, (mother->args.wall.image));
-     mlx_destroy_image(mother->mlx.ptr, mother->args.floor.image);
-     mlx_destroy_image(mother->mlx.ptr, mother->args.coins1.image);
-     mlx_destroy_image(mother->mlx.ptr, mother->args.exit.image);
-     mlx_destroy_image(mother->mlx.ptr, mother->args.player.image);
+     // if (mother->args.matrix[i])
+          free(mother->args.matrix);
+     clear_images(mother);
+     mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
+     mlx_destroy_display(mother->mlx.ptr);
+     free(mother->mlx.ptr);
+     exit(1);
+}
+
+void clear_images(t_general *mother)
+{
+     if (mother->args.wall.image)    
+          mlx_destroy_image(mother->mlx.ptr, (mother->args.wall.image));
+     if (mother->args.floor.image)
+          mlx_destroy_image(mother->mlx.ptr, mother->args.floor.image);
+     if (mother->args.coins1.image)
+          mlx_destroy_image(mother->mlx.ptr, mother->args.coins1.image);
+     if (mother->args.exit.image)
+          mlx_destroy_image(mother->mlx.ptr, mother->args.exit.image);
+     if (mother->args.player.image)
+          mlx_destroy_image(mother->mlx.ptr, mother->args.player.image);
      // free(mother->args.map);
      // free(mother->args.line);
      // free(mother->args.index);
@@ -55,13 +70,7 @@ int key_press(int keycode, t_general *mother)
      else if (keycode == RIGHT)
           mother->gps.move.x = 1;
      else if (keycode == ESC)
-     {
-          clear_images(mother);
-          mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
-          mlx_destroy_display(mother->mlx.ptr);
-          free(mother->mlx.ptr);
-          exit(1);
-     }
+          ft_clean(mother);
      mother->gps.event = 1;
      return (0);
 }
