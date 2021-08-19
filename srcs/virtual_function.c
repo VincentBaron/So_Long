@@ -21,6 +21,29 @@ char *draw_pixel(t_general *mother, int x, int y)
      return (dest);
 }
 
+void ft_clean_cross(t_general *mother)
+{
+     (void)mother;
+     // int i;
+
+     // i = 0;
+     // while (mother->args.matrix[i])
+     // {
+     //      // if (mother->args.matrix[i])
+     //           free(mother->args.matrix[i]);
+     //      i++;
+     // }
+     // if (mother->args.matrix)
+          // free(mother->args.matrix);
+     // clear_images(mother);
+     // if (mother->mlx.win)
+     //      mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
+     // if (mother->mlx.ptr)
+     //      mlx_destroy_display(mother->mlx.ptr);
+     // free(mother->mlx.ptr);
+     exit(0);
+}
+
 void ft_clean(t_general *mother)
 {
      int i;
@@ -32,13 +55,15 @@ void ft_clean(t_general *mother)
                ft_free(mother->args.matrix[i]);
           i++;
      }
-     // if (mother->args.matrix[i])
+     if (mother->args.matrix)
           free(mother->args.matrix);
      clear_images(mother);
-     mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
-     mlx_destroy_display(mother->mlx.ptr);
+     if (mother->mlx.win)
+          mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
+     if (mother->mlx.ptr)
+          mlx_destroy_display(mother->mlx.ptr);
      free(mother->mlx.ptr);
-     exit(1);
+     exit(0);
 }
 
 void clear_images(t_general *mother)
@@ -53,9 +78,6 @@ void clear_images(t_general *mother)
           mlx_destroy_image(mother->mlx.ptr, mother->args.exit.image);
      if (mother->args.player.image)
           mlx_destroy_image(mother->mlx.ptr, mother->args.player.image);
-     // free(mother->args.map);
-     // free(mother->args.line);
-     // free(mother->args.index);
 }
 
 int key_press(int keycode, t_general *mother)
@@ -101,10 +123,8 @@ int events_list(t_general *mother)
 
 int exit_game(int keycode, t_general *mother)
 {
-     // clear_images(mother);
      (void)keycode;
-     (void)mother;
-     exit(1);
+     ft_clean_cross(mother);
      return (0);
 }
 
@@ -124,7 +144,7 @@ void game_start(t_general *mother)
      load_textures(mother);
      draw_map(mother);
      // mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->mlx.img_map.image, 0, 0);
-     mlx_hook(mother->mlx.win, 33, 1L << 17, exit_game, mother);
+     mlx_hook(mother->mlx.win, 17, 0L, exit_game, mother);
      mlx_hook(mother->mlx.win, KEY_PRESS, 1L << 0, &key_press, mother);
      mlx_hook(mother->mlx.win, KEY_RELEASE, 1L << 1, &key_release, mother);
      // mlx_hook(mother->mlx.win, KEY_PRESS, 1L << 17, &cross_exit, mother);

@@ -138,6 +138,7 @@ typedef struct s5_list
     int move;
     int collectibles;
     int exit;
+    int cross;
     t_map map;
 }   t_general;
 
