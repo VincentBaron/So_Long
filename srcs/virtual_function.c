@@ -31,13 +31,13 @@ void clear_images(t_general *mother)
           ft_free(mother->args.matrix[i]);
           i++;
      }
+     free(mother->args.matrix);
      
      mlx_destroy_image(mother->mlx.ptr, (mother->args.wall.image));
      mlx_destroy_image(mother->mlx.ptr, mother->args.floor.image);
      mlx_destroy_image(mother->mlx.ptr, mother->args.coins1.image);
      mlx_destroy_image(mother->mlx.ptr, mother->args.exit.image);
      mlx_destroy_image(mother->mlx.ptr, mother->args.player.image);
-     free(mother->args.matrix);
      // free(mother->args.map);
      // free(mother->args.line);
      // free(mother->args.index);
@@ -92,7 +92,7 @@ int events_list(t_general *mother)
 
 int exit_game(int keycode, t_general *mother)
 {
-     clear_images(mother);
+     // clear_images(mother);
      (void)keycode;
      (void)mother;
      exit(1);
