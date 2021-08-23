@@ -14,7 +14,20 @@
 
 void    error(t_general *mother, int e)
 {
-    (void)mother;
+    int i;
+
+     i = 0;
+     while (mother->args.matrix[i])
+     {
+          if (mother->args.matrix[i])
+               ft_free(mother->args.matrix[i]);
+          i++;
+     }
+     
+     if (mother->args.matrix)
+        free(mother->args.matrix);
+    if (mother->args.map)
+        free(mother->args.map);
     if (e == 1)
         ft_putstr_fd("Error\n1: Map is unvalid", 1);
     if (e == 2)
@@ -26,7 +39,6 @@ void    error(t_general *mother, int e)
     if (e == 5)
         ft_putstr_fd("Error\n5: Could not create bmp image", 1);
     
-    //free_program(mother);
     exit(1);
 }
 

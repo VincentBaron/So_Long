@@ -98,8 +98,14 @@ void check_map(t_general *mother)
         f = 0;
         while (mother->args.matrix[i][f])
         {
+            if (check_charset(mother->args.matrix[i][f], "10PCE") == -1)
+                error(mother, 1);
             if (mother->args.matrix[i][f] == 'P')
+            {
                 player_count++;
+                if (player_count > 1)
+                    mother->args.matrix[i][f] = '0';
+            }
             if (mother->args.matrix[i][f] == 'C')
                 sprite_count++;
             if (mother->args.matrix[i][f] == 'E')

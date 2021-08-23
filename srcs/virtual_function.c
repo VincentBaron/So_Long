@@ -62,7 +62,8 @@ int ft_clean(t_general *mother)
           mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
      if (mother->mlx.ptr)
           mlx_destroy_display(mother->mlx.ptr);
-     free(mother->mlx.ptr);
+     if (mother->mlx.ptr)
+          free(mother->mlx.ptr);
      exit(0);
      return (0);
 }
@@ -119,13 +120,6 @@ int events_list(t_general *mother)
           mother->gps.event = 0;
      }
 
-     return (0);
-}
-
-int ft_cross(int keycode, t_general *mother)
-{
-     (void)keycode;
-     ft_clean_cross(mother);
      return (0);
 }
 

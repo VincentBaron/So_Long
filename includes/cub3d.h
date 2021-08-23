@@ -184,6 +184,7 @@ int  new_map(t_general *mother);
 
 void load_textures(t_general *mother);
 void clear_images(t_general *mother);
+int ft_clean(t_general *mother);
 
 
 #endif
