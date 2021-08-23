@@ -23,23 +23,23 @@ char *draw_pixel(t_general *mother, int x, int y)
 
 void ft_clean_cross(t_general *mother)
 {
-     (void)mother;
-     // int i;
+     // (void)mother;
+     int i;
 
-     // i = 0;
-     // while (mother->args.matrix[i])
-     // {
-     //      // if (mother->args.matrix[i])
-     //           free(mother->args.matrix[i]);
-     //      i++;
-     // }
+     i = 0;
+     while (mother->args.matrix[i])
+     {
+          if (mother->args.matrix[i])
+               free(mother->args.matrix[i]);
+          i++;
+     }
      // if (mother->args.matrix)
-          // free(mother->args.matrix);
+     //      free(mother->args.matrix);
      // clear_images(mother);
      // if (mother->mlx.win)
      //      mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
      // if (mother->mlx.ptr)
-     //      mlx_destroy_display(mother->mlx.ptr);
+          // mlx_destroy_display(mother->mlx.ptr);
      // free(mother->mlx.ptr);
      exit(0);
 }
@@ -121,7 +121,7 @@ int events_list(t_general *mother)
      return (0);
 }
 
-int exit_game(int keycode, t_general *mother)
+int ft_cross(int keycode, t_general *mother)
 {
      (void)keycode;
      ft_clean_cross(mother);
@@ -143,11 +143,9 @@ void game_start(t_general *mother)
           ft_putstr_fd("Error creating window", 1);
      load_textures(mother);
      draw_map(mother);
-     // mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->mlx.img_map.image, 0, 0);
-     mlx_hook(mother->mlx.win, 17, 0L, exit_game, mother);
      mlx_hook(mother->mlx.win, KEY_PRESS, 1L << 0, &key_press, mother);
+     mlx_hook(mother->mlx.win, 33, (1L << 17), ft_cross, mother);
      mlx_hook(mother->mlx.win, KEY_RELEASE, 1L << 1, &key_release, mother);
-     // mlx_hook(mother->mlx.win, KEY_PRESS, 1L << 17, &cross_exit, mother);
      mlx_loop_hook(mother->mlx.ptr, &events_list, mother);
      mlx_loop(mother->mlx.ptr);
 }

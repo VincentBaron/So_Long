@@ -30,10 +30,36 @@ void    error(t_general *mother, int e)
     exit(1);
 }
 
+void init_image(t_img *img)
+{
+    img->image = NULL;
+    img->addr = NULL;
+    img->bpp = 0;
+    img->color = 0;
+    img->endian = 0;
+    img->size_line = 0;
+    img->width = 0;
+    img->height = 0;
+}
+
+void init_mother(t_general *mother)
+{
+    init_image(&(mother->args.player));
+    init_image(&(mother->args.coins1));
+    init_image(&(mother->args.exit));
+    init_image(&(mother->args.wall));
+    init_image(&(mother->args.floor));
+    mother->mlx.ptr = NULL;
+    mother->mlx.win = NULL;
+    mother->args.matrix = NULL;
+}
+
 int main(int argc, char **argv)
 {
     t_general mother;
 
+
+    init_mother(&mother);
     if (argc != 2)
       error(&mother, 2);
     if ((mother.args.fd = open(argv[1], O_RDONLY)) == -1)
