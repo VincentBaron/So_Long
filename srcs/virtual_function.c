@@ -44,7 +44,7 @@ void ft_clean_cross(t_general *mother)
      exit(0);
 }
 
-void ft_clean(t_general *mother)
+int ft_clean(t_general *mother)
 {
      int i;
 
@@ -64,6 +64,7 @@ void ft_clean(t_general *mother)
           mlx_destroy_display(mother->mlx.ptr);
      free(mother->mlx.ptr);
      exit(0);
+     return (0);
 }
 
 void clear_images(t_general *mother)
@@ -144,7 +145,7 @@ void game_start(t_general *mother)
      load_textures(mother);
      draw_map(mother);
      mlx_hook(mother->mlx.win, KEY_PRESS, 1L << 0, &key_press, mother);
-     mlx_hook(mother->mlx.win, 33, (1L << 17), ft_cross, mother);
+     mlx_hook(mother->mlx.win, 33, (1L << 17), ft_clean, mother);
      mlx_hook(mother->mlx.win, KEY_RELEASE, 1L << 1, &key_release, mother);
      mlx_loop_hook(mother->mlx.ptr, &events_list, mother);
      mlx_loop(mother->mlx.ptr);
