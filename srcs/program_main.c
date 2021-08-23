@@ -69,6 +69,20 @@ void init_mother(t_general *mother)
     mother->args.map = NULL;
 }
 
+int check_file(char *file)
+{
+    int i;
+    
+      i = ft_strlen(file) - 1;
+    if (i < 4)
+        return (0);
+    i -= 3;
+    if (ft_strncmp(&file[i], ".ber", 4) != 0)
+        return (0);
+    return (1);
+  
+}
+
 int main(int argc, char **argv)
 {
     t_general mother;
@@ -77,6 +91,8 @@ int main(int argc, char **argv)
     init_mother(&mother);
     if (argc != 2)
       error(&mother, 2);
+    if (!check_file(argv[1]))
+        error(&mother, 2);
     mother.args.fd = open(argv[1], __O_DIRECTORY);
     printf("fd %d\n", mother.args.fd);
     if (mother.args.fd != -1)
