@@ -16,6 +16,11 @@ void    error(t_general *mother, int e)
 {
     int i;
 
+     if (e == 2)
+     {
+        ft_putstr_fd("Error\n2: Arguments invalid\n", 1);
+        exit(1);
+     }
      i = 0;
      while (mother->args.matrix[i])
      {
@@ -23,21 +28,18 @@ void    error(t_general *mother, int e)
                ft_free(mother->args.matrix[i]);
           i++;
      }
-     
      if (mother->args.matrix)
         free(mother->args.matrix);
     if (mother->args.map)
         free(mother->args.map);
     if (e == 1)
-        ft_putstr_fd("Error\n1: Map is unvalid", 1);
-    if (e == 2)
-        ft_putstr_fd("Error\n2: Arguments invalid", 1);
+        ft_putstr_fd("Error\n1: Map is unvalid\n", 1);
     if (e == 3)
-        ft_putstr_fd("Error\n3: Malloc Error", 1);
+        ft_putstr_fd("Error\n3: Malloc Error\n", 1);
     if (e == 4)
-        ft_putstr_fd("Error\n4: Too many players", 1);
+        ft_putstr_fd("Error\n4: Too many players\n", 1);
     if (e == 5)
-        ft_putstr_fd("Error\n5: Could not create bmp image", 1);
+        ft_putstr_fd("Error\n5: Could not create bmp image\n", 1);
     
     exit(1);
 }
@@ -64,6 +66,7 @@ void init_mother(t_general *mother)
     mother->mlx.ptr = NULL;
     mother->mlx.win = NULL;
     mother->args.matrix = NULL;
+    mother->args.map = NULL;
 }
 
 int main(int argc, char **argv)
@@ -74,7 +77,16 @@ int main(int argc, char **argv)
     init_mother(&mother);
     if (argc != 2)
       error(&mother, 2);
-    if ((mother.args.fd = open(argv[1], O_RDONLY)) == -1)
+    mother.args.fd = open(argv[1], __O_DIRECTORY);
+    printf("fd %d\n", mother.args.fd);
+    if (mother.args.fd != -1)
+    {
+        error(&mother, 2);
+        return (0);
+    }
+   mother.args.fd = open(argv[1], O_RDONLY);
+   printf("fd %d\n", mother.args.fd);
+    if (mother.args.fd == -1)
     {
         error(&mother, 2);
         return (0);

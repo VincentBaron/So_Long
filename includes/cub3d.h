@@ -19,6 +19,7 @@
 # include "../Libft/libft.h"
 # include "../mlx-linux/mlx.h"
 # include "math.h"
+# include <fcntl.h>
 
 //LINUX
 
