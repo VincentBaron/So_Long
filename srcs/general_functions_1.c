@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:42:53 by vbaron            #+#    #+#             */
-/*   Updated: 2021/07/29 22:50:13 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/08/23 23:16:57 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,16 @@ void	create_map(t_input *args)
 			size = ft_strlen(args->line);
 			dup = malloc(sizeof(char) * (size + 3));
 			if (!dup)
-				return;
-			i = 0;
-			while (i < size)
-			{
-						dup[i] = args->line[i];
-						i++;
-			}
-		
+				return ;
+			i = -1;
+			while (++i < size)
+				dup[i] = args->line[i];
 			dup[i] = 'x';
 			i++;
 			dup[i] = '\0';
 			args->map = ft_strjoin_bis(args->map, dup);
-				ft_free(dup);
-			break;
+			ft_free(dup);
+			break ;
 		}
 		i++;
 	}
