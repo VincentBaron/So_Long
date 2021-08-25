@@ -40,7 +40,8 @@ char	*ft_strjoin_bis(char *s1, char *s2)
 	if (!s1)
 		s1 = ft_substr_bis("", 0, 0);
 	size = ft_strlen_bis(s1) + ft_strlen_bis(s2);
-	if (!(join = malloc(sizeof(char) * (size + 1))))
+	join = malloc(sizeof(char) * (size + 1));
+	if (!join)
 	{
 		ft_free(s1);
 		return (NULL);
@@ -67,7 +68,8 @@ char	*ft_substr_bis(char *s, unsigned int start, size_t len)
 		s = "";
 	if (start > ft_strlen_bis(s))
 		len = 0;
-	if (!(sub = malloc(sizeof(char) * (len + 1))))
+	sub = malloc(sizeof(char) * (len + 1));
+	if (!sub)
 		return (NULL);
 	i = 0;
 	while (i < len)
