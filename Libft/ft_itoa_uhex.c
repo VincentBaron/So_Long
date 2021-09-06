@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 13:12:06 by vbaron            #+#    #+#             */
-/*   Updated: 2020/05/26 18:29:03 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/07/28 17:34:31 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ char	*alloc_itoa_uhex(unsigned int n, int size, int sign)
 {
 	char	*itoa;
 
-	if (!(itoa = (char *)malloc(sizeof(char) * (size + 1))))
+	itoa = (char *)malloc(sizeof(char) * (size + 1));
+	if (!itoa)
 		return (0);
 	itoa[size] = '\0';
 	size--;
@@ -36,7 +37,7 @@ char	*alloc_itoa_uhex(unsigned int n, int size, int sign)
 	return (itoa);
 }
 
-int		get_size_uhex(unsigned int n)
+int	get_size_uhex(unsigned int n)
 {
 	int	size;
 

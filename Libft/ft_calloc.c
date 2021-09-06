@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbaron <vincentbaron1996@gmail.com>        +#+  +:+       +#+        */
+/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 13:11:04 by vbaron            #+#    #+#             */
-/*   Updated: 2020/04/27 13:11:06 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/07/28 17:23:38 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	*ft_calloc(int nmemb, int size)
 {
-	void *array;
+	void	*array;
 
-	if (!(array = (void *)malloc(nmemb * size)))
+	array = (void *)malloc(nmemb * size);
+	if (!array)
 		return (0);
 	ft_bzero(array, (size * nmemb));
 	return ((void *)array);

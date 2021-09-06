@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 13:12:06 by vbaron            #+#    #+#             */
-/*   Updated: 2020/05/03 20:27:41 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/07/28 17:25:46 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ char	*alloc_itoa(unsigned int n, int size, int sign)
 {
 	char	*itoa;
 
-	if (!(itoa = (char *)malloc(sizeof(char) * (size + 1))))
+	itoa = (char *)malloc(sizeof(char) * (size + 1));
+	if (!itoa)
 		return (0);
 	itoa[size] = '\0';
 	size--;
@@ -33,7 +34,7 @@ char	*alloc_itoa(unsigned int n, int size, int sign)
 	return (itoa);
 }
 
-int		get_size(int n)
+int	get_size(int n)
 {
 	int	size;
 

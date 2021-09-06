@@ -6,7 +6,7 @@
 /*   By: vbaron <vincentbaron1996@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 13:14:06 by vbaron            #+#    #+#             */
-/*   Updated: 2020/04/29 21:04:08 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/07/28 17:36:07 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	if (!src && !dest)
 		return (NULL);

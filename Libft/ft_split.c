@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 13:14:59 by vbaron            #+#    #+#             */
-/*   Updated: 2020/06/22 17:54:51 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/09/06 12:44:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			check_size(char *str, char *charset)
+int	check_size(char *str, char *charset)
 {
-	int size;
+	int	size;
 
 	size = 0;
 	while (*str)
@@ -31,7 +31,7 @@ int			check_size(char *str, char *charset)
 	return (size);
 }
 
-char		*create_string(char *str, char *charset)
+char	*create_string(char *str, char *charset)
 {
 	int		z;
 	char	*split;
@@ -41,7 +41,8 @@ char		*create_string(char *str, char *charset)
 	z = 0;
 	while (str[x] && check_charset(str[x], charset) == -1)
 		x++;
-	if (!(split = (char *)malloc(sizeof(char) * (x + 1))))
+	split = (char *)malloc(sizeof(char) * (x + 1));
+	if (!split)
 		return (NULL);
 	x = 0;
 	while (str[x] && check_charset(str[x], charset) != -1)
@@ -56,13 +57,14 @@ char		*create_string(char *str, char *charset)
 	return (split);
 }
 
-char		**ft_split(char *str, char *charset)
+char	**ft_split(char *str, char *charset)
 {
 	int		i;
 	char	**split_tab;
 
-	if (!(split_tab = (char **)
-				malloc(sizeof(char *) * (check_size(str, charset) + 1))))
+	split_tab = (char **)malloc(sizeof(char *)
+			*(check_size(str, charset) + 1));
+	if (!split_tab)
 		return (NULL);
 	i = 0;
 	while (*str)

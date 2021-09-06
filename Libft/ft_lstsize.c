@@ -6,7 +6,7 @@
 /*   By: vbaron <vincentbaron1996@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 13:13:26 by vbaron            #+#    #+#             */
-/*   Updated: 2020/04/27 13:13:27 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/07/28 17:35:46 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int size;
+	int	size;
 
 	if (lst == NULL)
 		return (0);

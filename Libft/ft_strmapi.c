@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 13:15:43 by vbaron            #+#    #+#             */
-/*   Updated: 2020/05/03 20:29:23 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/07/28 17:31:10 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size = 0;
 	while (s[size])
 		size++;
-	if (!(snew = (char *)malloc(sizeof(char) * (size + 1))))
+	snew = (char *)malloc(sizeof(char) * (size + 1));
+	if (!snew)
 		return (0);
 	size = 0;
 	while (s[size])

@@ -6,7 +6,7 @@
 /*   By: vbaron <vincentbaron1996@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 13:12:38 by vbaron            #+#    #+#             */
-/*   Updated: 2020/04/27 13:12:40 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/07/28 17:35:18 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list **temp;
+	t_list	**temp;
 
 	if ((*lst) != 0 && del)
 	{

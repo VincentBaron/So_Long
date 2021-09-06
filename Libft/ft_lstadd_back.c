@@ -6,7 +6,7 @@
 /*   By: vbaron <vincentbaron1996@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 13:12:15 by vbaron            #+#    #+#             */
-/*   Updated: 2020/04/30 18:11:11 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/07/28 17:34:55 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	t_list *ptr;
+	t_list	*ptr;
 
 	if (*alst == NULL)
 		*alst = new;

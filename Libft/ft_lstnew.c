@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 13:13:18 by vbaron            #+#    #+#             */
-/*   Updated: 2020/05/04 00:08:28 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/07/28 17:28:13 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*list;
 
-	if (!(list = (t_list *)malloc(sizeof(t_list))))
+	list = (t_list *)malloc(sizeof(t_list));
+	if (!list)
 		return (0);
 	list->content = content;
 	list->next = 0;
