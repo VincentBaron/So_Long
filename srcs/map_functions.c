@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 15:31:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/06 12:23:15 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/06 14:34:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	redraw_pos(t_general *mother, t_coor old_pos, int id)
 {
+	mother->moves++;
+	printf("Number of moves: %d\n", mother->moves);
 	if (id == 1)
 		mother->gps.pos.y -= 1;
 	if (id == 2)

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 12:22:49 by user42            #+#    #+#             */
-/*   Updated: 2021/09/06 12:24:36 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/06 14:26:22 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,8 @@ void	check_display(t_general *mother, char pos)
 
 void	draw_map(t_general *mother)
 {
-	char	*move_str;
 	char	pos;
 
-	move_str = ft_itoa(mother->move);
-	mother->move++;
 	mother->map.track_x = 0;
 	while (mother->args.matrix[mother->map.track_x])
 	{
@@ -61,5 +58,4 @@ void	draw_map(t_general *mother)
 		}
 		mother->map.track_x++;
 	}
-	ft_free(move_str);
 }

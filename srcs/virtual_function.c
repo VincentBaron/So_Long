@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/06 12:28:11 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/06 14:33:46 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	game_start(t_general *mother)
 	mother->gps.move.x = 0;
 	mother->gps.event = 0;
 	mother->gps.move.y = 0;
-	mother->move = 0;
 	mother->args.R[0] = 5000;
 	mother->args.R[1] = 5000;
 	mother->mlx.ptr = mlx_init();

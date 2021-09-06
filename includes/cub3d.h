@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/06 12:39:50 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/06 14:25:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ typedef struct s5_list
 	t_input	args;
 	t_mlx	mlx;
 	t_gps	gps;
-	int		move;
+	int		moves;
 	int		collectibles;
 	int		exit;
 	int		cross;

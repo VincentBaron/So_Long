@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:38:34 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/06 11:28:22 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/06 14:25:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_mother(t_general *mother)
 	mother->mlx.win = NULL;
 	mother->args.matrix = NULL;
 	mother->args.map = NULL;
+	mother->moves = 0;
 }
 
 int	check_file(char *file)
