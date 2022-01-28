@@ -4,7 +4,7 @@
 
 This project was a first introduction to graphic programming using the mlx library. The goal of the project was to code a 2D game with a map.ber file to parse and render it in 2D (see file format below). It needed a player and some items to collect to unlock the exit and finish the game.
 
-'''
+```
 1111111111111111111111111
 1000000000110000000000001
 1011000001110000C00000001
@@ -19,7 +19,7 @@ This project was a first introduction to graphic programming using the mlx libra
 1100000111010101111101111
 1111111111111111111111111
 1111111111111111111111111
-'''
+```
 
 ## What I learned
 
