@@ -21,7 +21,7 @@ This project was a first introduction to graphic programming using the mlx libra
 1111111111111111111111111
 ```
 
-It needed a player (P), Collectibles (C) and an Exit (E).
+As shown above, the game consists of a player (P), map delimiters (1), floor space (0), Collectibles (C) and an Exit (E).
 
 The goal of the game is that the Player can collect all collectibles which will update the score and be able to access the exit and hence finish the game only when all collectibles have been collected.
 
